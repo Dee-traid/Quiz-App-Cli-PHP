@@ -1,35 +1,55 @@
 <?php
 
-class DatabaseHelper{
-    private static $pdo = null;
+class DatabaseHelper {
+    private static ?PDO $pdo = null;
 
-    public static function getPDOInstance(){
-        if(self::$pdo != null){
+    public static function getPDOInstance() {
+
+        if (self::$pdo !== null) {
             return self::$pdo;
         }
 
+        // Load env variables
+        self::loadEnv();
 
-        $host = "localhost";
-        $port = "5432";
-        $user = "postgres";
-        $password = "Traid101";
-        $database = "quizapp";
+        $host = $_ENV['DB_HOST'] ?? 'localhost';
+        $port = $_ENV['DB_PORT'] ?? '5432';
+        $db   = $_ENV['DB_NAME'] ?? '';
+        $user = $_ENV['DB_USER'] ?? '';
+        $pass = $_ENV['DB_PASS'] ?? '';
 
-        $dsn = "pgsql:host=$host;port=$port;dbname=$database;"; 
+        $dsn = "pgsql:host=$host;port=$port;dbname=$db";
 
-        try{
-            self::$pdo = new PDO($dsn, $user, $password);
-            self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        }catch(PDOException $e){
-            echo " Connection failed!!" . $e->getMessage() . PHP_EOL;
+        try {
+            self::$pdo = new PDO($dsn, $user, $pass, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            ]);
+        } catch (PDOException $e) {
+            die("Database connection failed.");
         }
-        return self::$pdo;
 
-    
+        return self::$pdo;
     }
 
-    
+    private static function loadEnv() {
+        $path = __DIR__ . '/.env';
+
+        if (!file_exists($path)) {
+            return;
+        }
+
+        $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lines as $line) {
+            if (str_starts_with(trim($line), '#')) {
+                continue;
+            }
+
+            [$key, $value] = explode('=', $line, 2);
+            $_ENV[$key] = trim($value);
+        }
+    }
 }
+
+
 
 ?>
