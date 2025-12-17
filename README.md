@@ -64,3 +64,14 @@ php-cli-quiz-app/
 ├── .gitignore
 ├── .env.example
 └── LICENSE
+
+
+
+##  Author
+
+ADEJOH JOSHUA 
+Backend PHP Developer  
+
+- GitHub: https://github.com/Dee-Traid 
+- LinkedIn: https://linkedin.com/in/adejoh-joshua
+
