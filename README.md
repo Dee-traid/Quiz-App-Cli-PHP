@@ -1,45 +1,66 @@
 # PHP CLI Quiz Management System
 
-A command-line based quiz application built with **PHP** and **PostgreSQL**.  
-The system supports **admin management**, **user authentication**, **timed quizzes**, and **result tracking** via the terminal.
+A command-line quiz application built with PHP (OOP) and PostgreSQL.  
+This project demonstrates backend fundamentals such as authentication, database design, secure password handling, and timed user interactions — all within a terminal environment.
 
 ---
 
-## 🚀 Features
+##  Problem Statement
 
-### 👤 User
-- Register & login
-- Take subject-based quizzes
+Many quiz platforms focus on web interfaces, but few demonstrate how backend systems can function independently of a UI.  
+This project solves that by implementing a **fully interactive quiz system via the command line**, focusing on logic, security, and data integrity.
+
+---
+
+##  Features
+
+###  User Module
+- User registration and login
+- Secure password hashing (`password_hash`, `password_verify`)
+- Subject-based quiz selection
 - Timed quiz sessions
 - Automatic score calculation
-- Quiz results stored with timestamp
-- View past quiz results
+- Quiz result persistence with timestamps
+- View past quiz attempts
 
-### 🛠 Admin
-- Admin registration & login
-- Add, edit, view, delete questions
-- Manage subjects & courses
+###  Admin Module
+- Admin authentication
+- Create, update, view, and delete quiz questions
+- Manage subjects and courses
 
-### ⚙ System
-- CLI interaction
-- Secure password hashing
-- PDO-based PostgreSQL connection
-- OOP architecture
-- Question shuffling (randomized quizzes)
-- Timer enforcement
-
----
-
-## 🧱 Technologies
-
-- PHP (CLI)
-- PostgreSQL
-- PDO
-- GitHub
+###  Core System
+- CLI-based user interaction
+- PDO database abstraction
+- PostgreSQL integration
+- Object-Oriented architecture
+- Question randomization (shuffling)
+- Quiz timer enforcement
+- Defensive input validation
 
 ---
 
-## ▶ Run the App
+##  Tech Stack
 
-```bash
-php index.php
+- **Language:** PHP (CLI)
+- **Database:** PostgreSQL
+- **Architecture:** Object-Oriented Programming (OOP)
+- **Security:** Password hashing, prepared statements
+- **Version Control:** Git & GitHub
+
+---
+
+## 📁 Project Structure
+
+php-cli-quiz-app/
+│
+├── index.php
+├── DatabaseHelper.php
+├── AppManager.php
+├── Admin.php
+├── User.php
+├── Question.php
+├── Quiz.php
+├── README.md
+├── .gitignore
+├── .env.example
+└── LICENSE
