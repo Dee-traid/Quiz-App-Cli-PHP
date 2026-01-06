@@ -14,8 +14,8 @@ class DatabaseHelper {
 
         $host = $_ENV['DB_HOST'] ?? 'localhost';
         $port = $_ENV['DB_PORT'] ?? '5432';
-        $db   = $_ENV['DB_NAME'] ?? '';
-        $user = $_ENV['DB_USER'] ?? '';
+        $db   = $_ENV['DB_NAME'] ?? 'quiz_app';
+        $user = $_ENV['DB_USER'] ?? 'postgres';
         $pass = $_ENV['DB_PASS'] ?? '';
 
         $dsn = "pgsql:host=$host;port=$port;dbname=$db";
@@ -53,3 +53,4 @@ class DatabaseHelper {
 
 
 ?>
+
