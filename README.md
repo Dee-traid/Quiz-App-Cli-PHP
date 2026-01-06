@@ -49,6 +49,19 @@ This project solves that by implementing a **fully interactive quiz system via t
 
 ---
 
+
+Quick Start (Local Setup)
+
+### 1. Prerequisites
+* PHP 8.1 or higher
+* PostgreSQL
+
+### 2. Setup the Database
+1. Create a database named `quiz_app`.
+2. Import the schema:
+   ```bash
+   psql -U postgres -d quiz_app -f DatabaseSchema.sql
+
 ## 📁 Project Structure
 
 php-cli-quiz-app/
