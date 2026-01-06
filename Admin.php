@@ -50,7 +50,7 @@ class Admin{
     public static function admin_login(){
         $pdo = DatabaseHelper::getPDOInstance();
 
-        list($email, $pass) = (new Admin("", "", "", "", "",""))->getInput();  
+        list($email, $pass) = (new Admin("", "", "", "",""))->getInput();  
 
         try{
             $stmt = $pdo->prepare(" SELECT * FROM admins WHERE email = :email");
@@ -79,5 +79,6 @@ class Admin{
     }
 
 }
+
 
 ?>
